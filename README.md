@@ -40,13 +40,15 @@ jpackage --type app-image --input loader/build/libs --main-jar HalcyonLoader.jar
 
 Сайт — статический: откройте `site/index.html` или выложите папку на любой хостинг.
 
+Готовый загрузчик — в [Releases](https://github.com/mallicee/halcyon-visuals/releases/latest).
+
 Текстуры скинов генерируются кодом: `mod/tools/*.java` (`java mod/tools/SwordGen.java mod/src/main/resources/assets/halcyon`).
 
 ## Ограничения
 
 - Мод работает на Minecraft 1.21.1 (Fabric).
 - Косметика клиентская: её видите только вы.
-- Оплата на сайте демонстрационная — платёжный провайдер подключается в `site/js/integrations.js`.
+- Halcyon распространяется бесплатно; корзина и кабинет на сайте — демонстрационные.
 
 ## Как сделан проект
 

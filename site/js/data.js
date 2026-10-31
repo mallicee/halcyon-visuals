@@ -1,5 +1,5 @@
 /* HALCYON — данные сайта.
-   Продаётся один товар: «Halcyon Visuals — полный набор» (загрузчик + мод со всеми визуалами).
+   Один бесплатный продукт: «Halcyon Visuals — полный набор» (загрузчик + мод со всеми визуалами).
    Остальные позиции каталога — витрина того, что входит в набор (included: true), отдельно не продаются.
    Отзывы, пользователи, заказы и промокоды — демонстрационные (помечены на сайте). */
 window.H = window.H || {};
@@ -25,19 +25,19 @@ H.data = {
     ['13', 'элементов HUD'],
     ['8 + 6', 'скинов мечей и плащей'],
     ['9', 'вкладок настроек в игре'],
-    ['100 ₽', 'за всё сразу']
+    ['0 ₽', 'всё бесплатно']
   ],
 
   products: [
     {
-      id: 'halcyon-loader', cat: 'bundle', title: 'Halcyon Visuals — полный набор', price: 100, tags: ['hot'],
+      id: 'halcyon-loader', cat: 'bundle', title: 'Halcyon Visuals — полный набор', price: 0, tags: ['hot'],
       versions: ['1.21.1'], added: '2026-10-31', popularity: 100, preview: 'bundle', featured: true,
       short: 'Halcyon Loader со всеми визуалами: HUD, мечи, плащи, эффекты, интерфейс и буст FPS.',
       desc: 'Программа установки Halcyon Loader и мод со всеми визуалами Halcyon для Minecraft 1.21.1 (Fabric). Установка в один клик в отдельную папку игры, профиль появляется в официальном Minecraft Launcher. Меню визуалов в игре — правый Shift.',
       specs: { 'Версия игры': '1.21.1', 'Загрузчик': 'Fabric (ставится сам)', 'Система': 'Windows 10/11 x64', 'Размер': '37 МБ' },
       features: ['HUD: 13 элементов, меню и перетаскивание', '8 скинов мечей, 3 удочки, 6 плащей', 'Эффекты попаданий, цифры урона, эффект убийства',
         'Стеклянные окна, подсказки, главное меню', 'Небо, погода, изумрудный блеск зачарований', 'Буст FPS и установка Sodium, Lithium, FerriteCore'],
-      install: ['Скачайте архив по ссылке после покупки и распакуйте.', 'Закройте Minecraft Launcher.', 'Запустите «Halcyon Loader.exe» и нажмите «Установить и играть».',
+      install: ['Скачайте архив на странице загрузчика и распакуйте.', 'Закройте Minecraft Launcher.', 'Запустите «Halcyon Loader.exe» и нажмите «Установить и играть».',
         'В Minecraft Launcher выберите профиль «Halcyon Visuals».', 'В игре нажмите правый Shift.']
     },
     {
@@ -157,7 +157,7 @@ H.data = {
 
   news: [
     { date: '2026-10-31', title: 'Вышел Halcyon 0.8.0', text: 'Сияние редкого лута, уведомления о подборе, скины удочки и изумрудный блеск.' },
-    { date: '2026-10-31', title: 'Полный набор — 100 ₽', text: 'Все визуалы Halcyon одним загрузчиком.' }
+    { date: '2026-10-31', title: 'Halcyon теперь бесплатный', text: 'Все визуалы одним загрузчиком, исходный код открыт на GitHub.' }
   ],
   announcements: [
     { title: 'Новые версии игры', cat: 'Поддержка', text: 'Сборки под более свежие версии 1.21.x.', eta: 'В планах' },
@@ -183,11 +183,11 @@ H.data = {
 
   /* Halcyon Loader — программа установки визуалов. */
   loader: {
-    price: 100,
-    /* Ссылка на страницу товара во внешнем магазине, который принимает оплату и выдаёт файл. */
+    price: 0,
     buyUrl: '',
-    /* Прямая ссылка на файл. Для платной раздачи её не публикуют на сайте. */
-    url: '',
+    /* Прямая ссылка на файл в GitHub Releases. */
+    url: 'https://github.com/mallicee/halcyon-visuals/releases/download/v0.8.0/HalcyonLoader-win64.zip',
+    repo: 'https://github.com/mallicee/halcyon-visuals',
     version: '0.8.0',
     file: 'HalcyonLoader-win64.zip',
     size: '37 МБ',
@@ -203,6 +203,6 @@ H.data = {
 
   /* Демо-заказ для кабинета (помечен demo: true). */
   demoOrders: [
-    { id: 'DEMO-7Q2K', date: '2026-10-31', status: 'Выполнен', demo: true, items: [{ id: 'halcyon-loader', title: 'Halcyon Visuals — полный набор', price: 100, qty: 1 }], total: 100 }
+    { id: 'DEMO-7Q2K', date: '2026-10-31', status: 'Выполнен', demo: true, items: [{ id: 'halcyon-loader', title: 'Halcyon Visuals — полный набор', price: 0, qty: 1 }], total: 0 }
   ]
 };
