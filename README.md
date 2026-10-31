@@ -3,6 +3,8 @@
 Магазин визуальных дополнений для Minecraft: сайт, Fabric-мод со всеми визуалами и загрузчик, который ставит их в один клик.
 Только внешний вид — без автоматизации и игровых преимуществ.
 
+**Сайт:** https://mallicee.github.io/halcyon-visuals/ · **Кейс:** https://mallicee.github.io/halcyon-visuals/case.html · **Скачать:** [Releases](https://github.com/mallicee/halcyon-visuals/releases/latest)
+
 ![Скины мечей](docs/img/swords-preview.png)
 ![Плащи](docs/img/capes-preview.png)
 
