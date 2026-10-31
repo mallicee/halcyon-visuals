@@ -1,0 +1,16 @@
+# Сборка
+build/
+.gradle/
+out/
+dist/
+*.zip
+
+# Тестовый запуск игры
+mod/run/
+
+# IDE
+.idea/
+*.iml
+.vscode/
+.DS_Store
+Thumbs.db
