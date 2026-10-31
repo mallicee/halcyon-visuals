@@ -39,7 +39,7 @@ window.H = window.H || {};
       <div class="relative mx-auto max-w-7xl grid lg:grid-cols-[1.1fr_.9fr] gap-14 lg:gap-10 items-center pt-16 sm:pt-24 pb-20 sm:pb-24">
         <div class="min-w-0">
           <div class="rise inline-flex items-center gap-2 rounded-full glass px-3 py-1.5 font-mono text-[11px] uppercase tracking-[.18em] text-mute">
-            <span class="relative w-1.5 h-1.5 rounded-full bg-neon pulse-dot"></span><span class="text-neon">Minecraft Visuals</span> · v${esc(D.loader.version)} · всё за ${rub(D.loader.price)}
+            <span class="relative w-1.5 h-1.5 rounded-full bg-neon pulse-dot"></span><span class="text-neon">Minecraft Visuals</span> · v${esc(D.loader.version)} · ${D.loader.price === 0 ? 'бесплатно' : 'всё за ' + rub(D.loader.price)}
           </div>
           <h1 class="rise d1 mt-6 font-display font-extrabold uppercase leading-[1.04] tracking-[-.02em] text-[clamp(1.9rem,5.2vw,4rem)]">Upgrade your <br><span class="shine-text">visual experience</span></h1>
           <p class="rise d2 mt-6 max-w-[52ch] text-lg sm:text-xl leading-relaxed text-fg/90">Premium visual enhancements for your Minecraft client.</p>
@@ -384,7 +384,7 @@ window.H = window.H || {};
       ['Буст FPS', 'Пресеты графики и установка Sodium, Lithium, FerriteCore.'],
       ['Только визуал', 'Никакой автоматизации и игровых преимуществ.']
     ];
-    const steps = ['Купите набор и скачайте архив по ссылке после оплаты, распакуйте его в любую папку.', 'Закройте Minecraft Launcher, если он открыт.',
+    const steps = ['Скачайте архив и распакуйте его в любую папку.', 'Закройте Minecraft Launcher, если он открыт.',
       'Запустите «Halcyon Loader.exe» и нажмите «Установить и играть».', 'В Minecraft Launcher выберите профиль «Halcyon Visuals» и нажмите «Играть».',
       'В игре нажмите правый Shift — откроется меню визуалов.'];
     return `
@@ -399,15 +399,14 @@ window.H = window.H || {};
               <div class="flex flex-wrap items-center justify-between gap-4">
                 <div><div class="font-display font-semibold text-lg">Halcyon Loader <span class="text-neon">${esc(L.version)}</span></div>
                   <div class="mt-1 font-mono text-[12px] text-mute">Windows 10/11 · x64 · ${esc(L.size)} · ${fmtDate(L.released)}</div></div>
-                <div class="flex items-center gap-4">
-                  <span class="font-mono text-2xl font-semibold tabular-nums">${rub(L.price)}</span>
-                  ${L.buyUrl
-                    ? `<a href="${esc(L.buyUrl)}" target="_blank" rel="noopener noreferrer" class="btn-neon h-12 px-6 rounded-xl font-bold inline-flex items-center gap-2">Купить ${ARROW}</a>`
-                    : `<button type="button" data-add="halcyon-loader" class="buy h-12 px-6 rounded-xl font-bold inline-flex items-center gap-2"><span>В корзину</span></button>`}
+                <div class="flex flex-wrap items-center gap-3">
+                  <span class="font-mono text-2xl font-semibold text-neon">Бесплатно</span>
+                  ${L.url
+                    ? `<a href="${esc(L.url)}" target="_blank" rel="noopener noreferrer" class="btn-neon h-12 px-6 rounded-xl font-bold inline-flex items-center gap-2">Скачать ${ARROW}</a>`
+                    : `<button type="button" class="btn-neon h-12 px-6 rounded-xl font-bold" disabled>Скачать</button>`}
                 </div>
               </div>
-              <p class="mt-3 text-[13px] text-mute">Ссылка на скачивание приходит после оплаты. Один платёж — все визуалы и обновления версии 0.x.</p>
-              ${L.buyUrl ? '' : '<p class="mt-2 font-mono text-[11px] text-warn">Оплата пока не подключена: оформление заказа на сайте демонстрационное.</p>'}
+              ${L.repo ? `<p class="mt-3 text-[13px] text-mute">Исходный код открыт: <a href="${esc(L.repo)}" target="_blank" rel="noopener noreferrer" class="text-fg hover:text-neon transition">${esc(L.repo.replace('https://', ''))}</a></p>` : ''}
               <div class="mt-5 pt-4 border-t border-line">
                 <div class="label-mono !text-[10px]">SHA-256 · проверка целостности файла</div>
                 <div class="mt-2 flex gap-2 items-center"><code id="ldHash" class="min-w-0 flex-1 font-mono text-[11px] text-fg/80 break-all">${esc(L.sha256)}</code>

@@ -20,10 +20,14 @@ window.H = window.H || {};
              : `<span class="font-mono text-[11px] text-mute">нет оценок</span>`;
   };
   const bundle = () => D.products.find(x => x.id === D.bundleId);
-  const priceHtml = p => p.included
+  const FREE_DL = (cls) => `<a href="#loader" class="${cls}">${ICON_DL}<span>Скачать</span></a>`;
+  const priceHtml = p => (!p.included && p.price === 0)
+    ? `<div class="font-mono leading-tight"><div class="text-[11px] text-mute">open source</div><div class="text-xl sm:text-2xl font-semibold text-neon">Бесплатно</div></div>`
+    : p.included
     ? `<div class="font-mono leading-tight"><div class="text-[11px] text-mute">в полном наборе</div><div class="text-lg font-semibold text-neon">включено</div></div>`
     : `<div class="font-mono leading-tight"><div class="text-[11px] text-mute ${p.old ? 'line-through' : ''}">${p.old ? rub(p.old) : '&nbsp;'}</div><div class="text-xl sm:text-2xl font-semibold tabular-nums">${rub(p.price)}</div></div>`;
   const ICON_VER = '<svg viewBox="0 0 24 24" class="w-3.5 h-3.5 text-neon" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 7h16M4 12h16M4 17h16"/></svg>';
+  const ICON_DL = '<svg viewBox="0 0 24 24" class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 4v11M7 10l5 5 5-5M5 20h14"/></svg>';
   const ICON_CART = '<svg viewBox="0 0 24 24" class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 7h14l-1.2 11.1a2 2 0 0 1-2 1.9H8.2a2 2 0 0 1-2-1.9z"/><path d="M9 7V6a3 3 0 0 1 6 0v1"/></svg>';
 
   /* ---------- Карточка товара (переиспользуемый компонент) ---------- */
@@ -44,7 +48,9 @@ window.H = window.H || {};
           ${priceHtml(p)}
           <div class="flex gap-2">
             <a href="#p-${esc(p.id)}" class="btn-ghost h-10 px-3.5 text-[13px]">Подробнее</a>
-            ${p.included
+            ${(p.included || p.id === D.bundleId) && bundle().price === 0
+              ? FREE_DL('buy h-10 px-3.5 rounded-xl font-semibold text-[13px] inline-flex items-center gap-1.5')
+              : p.included
               ? `<button type="button" class="buy h-10 px-3.5 rounded-xl font-semibold text-[13px] inline-flex items-center gap-1.5" data-add="${esc(D.bundleId)}" data-label="Набор · ${rub(bundle().price)}">${ICON_CART}<span>Набор · ${rub(bundle().price)}</span></button>`
               : `<button type="button" class="buy h-10 px-3.5 rounded-xl font-semibold text-[13px] inline-flex items-center gap-1.5" data-add="${esc(p.id)}">${ICON_CART}<span>В корзину</span></button>`}
           </div>
@@ -204,9 +210,13 @@ window.H = window.H || {};
             <div class="mt-6 glass neon-border rounded-2xl p-5">
               <p class="text-sm text-mute">Входит в <a href="#p-${esc(D.bundleId)}" class="text-fg hover:text-neon transition">${esc(bundle().title)}</a> вместе со всеми остальными визуалами.</p>
               <div class="mt-4 flex flex-wrap items-center justify-between gap-4">
-                <div class="font-mono text-2xl font-semibold tabular-nums">${rub(bundle().price)}</div>
-                <button type="button" class="btn-neon h-11 px-5 rounded-xl font-bold text-sm" data-add="${esc(D.bundleId)}">Купить набор</button>
+                <div class="font-mono text-2xl font-semibold tabular-nums">${bundle().price === 0 ? 'Бесплатно' : rub(bundle().price)}</div>
+                ${bundle().price === 0 ? FREE_DL('btn-neon h-11 px-5 rounded-xl font-bold text-sm inline-flex items-center gap-2') : `<button type="button" class="btn-neon h-11 px-5 rounded-xl font-bold text-sm" data-add="${esc(D.bundleId)}">Купить набор</button>`}
               </div>
+            </div>` : p.price === 0 ? `
+            <div class="mt-6 glass neon-border rounded-2xl p-5 flex flex-wrap items-center justify-between gap-4">
+              ${priceHtml(p)}
+              ${FREE_DL('btn-neon h-11 px-5 rounded-xl font-bold text-sm inline-flex items-center gap-2')}
             </div>` : `
             <div class="mt-6 glass rounded-2xl p-5">
               <div class="flex flex-wrap items-end justify-between gap-4">
