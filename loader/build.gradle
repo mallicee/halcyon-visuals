@@ -1,0 +1,40 @@
+plugins {
+    id 'java'
+    id 'application'
+}
+
+group = 'dev.halcyon'
+version = '0.8.0'
+
+repositories { mavenCentral() }
+
+dependencies {
+    implementation 'com.google.code.gson:gson:2.11.0'
+}
+
+java {
+    toolchain { languageVersion = JavaLanguageVersion.of(21) }
+}
+
+tasks.withType(JavaCompile).configureEach { options.encoding = 'UTF-8' }
+
+application { mainClass = 'dev.halcyon.loader.HalcyonLoader' }
+
+// Встраиваем собранный мод внутрь загрузчика
+def modJar = file('../mod/build/libs/halcyon-visuals-0.8.0.jar')
+processResources {
+    inputs.file(modJar)
+    from(modJar) {
+        into 'bundle'
+        rename { 'halcyon-visuals.jar' }
+    }
+}
+
+// Один исполняемый jar со всеми зависимостями
+jar {
+    manifest { attributes 'Main-Class': 'dev.halcyon.loader.HalcyonLoader' }
+    duplicatesStrategy = DuplicatesStrategy.EXCLUDE
+    from { configurations.runtimeClasspath.collect { it.isDirectory() ? it : zipTree(it) } }
+    exclude 'META-INF/*.SF', 'META-INF/*.DSA', 'META-INF/*.RSA', 'META-INF/versions/**/module-info.class', 'module-info.class'
+    archiveFileName = 'HalcyonLoader.jar'
+}
