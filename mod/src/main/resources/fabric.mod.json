@@ -1,0 +1,20 @@
+{
+  "schemaVersion": 1,
+  "id": "halcyon",
+  "version": "${version}",
+  "name": "Halcyon Visuals",
+  "description": "Premium visual enhancements: custom HUD, crosshairs, hit effects and glass GUI. Visual only, no gameplay advantages.",
+  "authors": ["Halcyon"],
+  "license": "All-Rights-Reserved",
+  "environment": "client",
+  "entrypoints": {
+    "client": ["dev.halcyon.visuals.HalcyonClient"]
+  },
+  "mixins": ["halcyon.mixins.json"],
+  "depends": {
+    "fabricloader": ">=0.16.0",
+    "minecraft": "1.21.1",
+    "java": ">=21",
+    "fabric-api": "*"
+  }
+}

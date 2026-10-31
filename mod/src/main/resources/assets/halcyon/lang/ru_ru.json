@@ -1,0 +1,11 @@
+{
+  "key.categories.halcyon": "Halcyon Visuals",
+  "key.halcyon.menu": "Открыть меню Halcyon",
+  "key.halcyon.reload": "Перезагрузить конфиг HUD",
+  "key.halcyon.toggle": "Вкл/выкл HUD Halcyon",
+  "key.halcyon.screenshot": "Скриншот без интерфейса",
+  "halcyon.msg.reloaded": "Halcyon: конфигурация перезагружена",
+  "halcyon.msg.error": "Halcyon: ошибка в конфиге, загружены настройки по умолчанию: %s",
+  "halcyon.msg.hud_on": "HUD Halcyon: включён",
+  "halcyon.msg.hud_off": "HUD Halcyon: выключен"
+}

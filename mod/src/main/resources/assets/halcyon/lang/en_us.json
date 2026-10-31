@@ -1,0 +1,11 @@
+{
+  "key.categories.halcyon": "Halcyon Visuals",
+  "key.halcyon.menu": "Open Halcyon menu",
+  "key.halcyon.reload": "Reload HUD config",
+  "key.halcyon.toggle": "Toggle Halcyon HUD",
+  "key.halcyon.screenshot": "Clean screenshot (no HUD)",
+  "halcyon.msg.reloaded": "Halcyon: config reloaded",
+  "halcyon.msg.error": "Halcyon: config error, defaults used: %s",
+  "halcyon.msg.hud_on": "Halcyon HUD: on",
+  "halcyon.msg.hud_off": "Halcyon HUD: off"
+}
